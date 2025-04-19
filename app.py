@@ -47,8 +47,7 @@ def init_db():
     con = ulanish()
     kursor = con.cursor()
     kursor.execute("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, ism TEXT NOT NULL, parol TEXT NOT NULL)")
-    kursor.execute("CREATE TABLE IF NOT EXISTS talabalar (id INTEGER PRIMARY KEY AUTOINCREMENT, ism TEXT NOT NULL, sinf TEXT, ball REAL)")
-    kursor.execute("INSERT OR IGNORE INTO users (ism, parol) VALUES ('admin', 'admin77')")
+    kursor.execute("INSERT OR IGNORE INTO users (ism, parol) VALUES ('Saidbek', '2011')")
     con.commit()
     con.close()
     return "Tizim Va Baza Tayyor"
