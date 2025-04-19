@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <style>
+        .ota{
+            border: 2px solid black;
+            width: 900px;
+            height: 500px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            background-image: url(https://wallpapers.com/images/featured/night-9nngmbvce2sn0x9h.jpg);
+            margin-top: 200px;
+            margin-left: 350px;
+        }
+        form{
+            margin-bottom: 20px;
+        }
+
+        input{
+            padding: 5px 10px;
+            background: linear-gradient(-45deg, rgb(255, 140, 0),rgb(245, 2, 75));
+            border: none;
+        }
+
+        button{
+            padding: 5px 10px;
+            background: linear-gradient(-45deg, rgb(255, 140, 0),rgb(245, 2, 75));
+            border: none;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="ota">
+
+        <h1>Tizimga kirish</h1>
+        <form method="POST">
+            <input type="text" name="ism" placeholder="Ismingiz📛">
+            <input type="text" name="parol" placeholder="Parolingiz🔑">
+            <button type="submit">Yuborish</button>
+        </form>
+        
+        {% if xabar %}
+           <p style="color: rgb(255, 255, 255);">{{  xabar }}</p>
+        {% endif %}
+    </div>
+
+
+</body>
+</html>

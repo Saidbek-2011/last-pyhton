@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>English Level Quiz</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <style>
+    .about{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-left: 270px;
+      margin-right: 400px;
+    }
+
+    .test{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-left: 270px;
+      margin-right: 400px;
+    }
+  </style>
+  
+</head>
+<body>
+  <header>
+    <a href="#" class="logo">
+      <img src="/71a211c826742bd973e6bd7663517009.png" alt="" width="70px">
+    </a>
+
+    <nav class="link">
+      <a href="#Home" class="links">Home</a>
+      <a href="#About" class="links">About</a>
+      <a href="#Test" class="links">Test</a>
+      <a href="/contact" class="links">Contact</a>
+
+    </nav>
+  </header>
+  
+  
+  
+  
+  
+  
+   
+    <h2 style="font-size: 35px; color: #4109e9; display: flex; align-items: center; justify-content: center; margin-bottom: -70px;" >Home</h2>
+  <div class="quiz-container" id="Home">
+    <h1>Choose Your English Level</h1>
+    <div class="level-grid">
+      <div class="level-card" onclick="startQuiz('A1')">
+        <h3>A1</h3>
+        <p>Beginner: Understand and use basic expressions.</p>
+      </div>
+      <div class="level-card" onclick="startQuiz('A2')">
+        <h3>A2</h3>
+        <p>Elementary: Communicate in simple tasks and routines.</p>
+      </div>
+      <div class="level-card" onclick="startQuiz('B1')">
+        <h3>B1</h3>
+        <p>Intermediate: Deal with most situations while traveling.</p>
+      </div>
+      <div class="level-card" onclick="startQuiz('B2')">
+        <h3>B2</h3>
+        <p>Upper-Intermediate: Understand complex texts and ideas.</p>
+      </div>
+    </div>
+
+    <div id="quiz" style="display:none;">
+      <div class="question" id="question">Question text</div>
+      <div class="options" id="options"></div>
+    </div>
+
+    <div class="result" id="result" style="display:none;">
+      <h2 id="score"></h2>
+      <button class="restart-btn" onclick="restartQuiz()">Restart</button>
+    </div>
+  </div>
+  
+  <h1 id="About">About</h1>
+  <div class="about">
+    <div class="text">
+      <h3 style="color: rgba(220, 12, 12, 0.522); width: 600px;">QuizMaster is a fun and interactive quiz platform designed to help you test and improve your knowledge across a variety of subjects. Whether you're into math, history, geography, technology, or general knowledge – we've got something for everyone.Our quizzes are perfect for students, learners, or anyone who simply loves a good challenge.Learn. Compete. Have fun. And most importantly – grow your knowledge!For any questions or suggestions, feel free to contact us at: quizmaster@example.com</h3>
+
+    </div>
+    <div class="image">
+      <img style="border-radius: 70%; width: 200px;" src="https://th.bing.com/th/id/OIP.2w_zBGAHUlp9rXi59845ZgHaHa?w=184&h=184&c=7&r=0&o=5&dpr=1.8&pid=1.7" alt="">
+    </div>
+    
+    
+  </div>
+
+  <h1 id="Test">Test</h1>
+  <div class="test" style="display: flex;">
+    <div class="photo">
+      <img style="border-radius: 50%; width: 200px;" src="https://t3.ftcdn.net/jpg/00/62/38/12/360_F_62381289_V4JoTwSnDBtMh1gQtLhDU4CJAcyWKFJg.jpg" alt="">
+    </div>
+    <div style="width: 600px;" class="tex">
+      <h3 style="color: rgba(220, 12, 12, 0.522); ">Ready to Challenge Yourself? <br> Choose a quiz and put your knowledge to the test!Whether you're here to learn something new, prepare for exams, or just have fun – our quizzes are made for you.Pick a category and start now!</h3>
+      <h3 style="color: rgba(220, 12, 12, 0.522);">Test Your Knowledge! <br> Take fun and educational quizzes in various categories.Let’s see how much you know – good luck!</h3>
+
+    </div>
+
+    
+
+  </div>
+
+  <footer style="display: flex; align-items: center; justify-content: center; flex-direction: column; background-color: cornflowerblue; height: 70px;">
+    <p style="color: cyan;">&copy;Made by Saidbek.All rights reserved</p>
+    <p><a style="color: white; text-decoration: none;" href="{{ url_for('logout') }}">Logout</a></p>
+    
+
+
+  </footer>
+
+  <script>
+    const questionBank = {
+      A1: [
+        { question: "What is your name?", options: ["I'm fine", "My name is Anna", "I'm 20", "Yes, I am"], answer: "My name is Anna" },
+        { question: "How old are you?", options: ["I'm 25 years old", "I live in Paris", "My name is John", "I am a teacher"], answer: "I'm 25 years old" },
+        { question: "Choose the correct sentence:", options: ["She go to school", "She goes to school", "She going school", "She gone to school"], answer: "She goes to school" },
+        { question: "What is the opposite of 'hot'?", options: ["Cold", "Warm", "Big", "Fast"], answer: "Cold" },
+        { question: "What is this? 🐶", options: ["Cat", "Dog", "Bird", "Cow"], answer: "Dog" }
+      ],
+      A2: [
+        { question: "What do you usually do on weekends?", options: ["At home", "Go shopping", "Yes, I do", "To the cinema"], answer: "Go shopping" },
+        { question: "I _____ to music every day.", options: ["listen", "listens", "listening", "listened"], answer: "listen" },
+        { question: "He has _______ apples.", options: ["much", "any", "many", "few"], answer: "many" },
+        { question: "Where is she from?", options: ["I’m fine", "She’s from Italy", "She 25", "Yes, she is"], answer: "She’s from Italy" },
+        { question: "Do you like pizza?", options: ["Yes, I do", "No, I am", "Yes, I am", "I pizza"], answer: "Yes, I do" }
+      ],
+      B1: [
+        { question: "I have lived here ______ 5 years.", options: ["since", "from", "for", "by"], answer: "for" },
+        { question: "He was late ______ the traffic.", options: ["because", "because of", "so", "although"], answer: "because of" },
+        { question: "She asked me where ______ from.", options: ["do I come", "I came", "did I come", "come I"], answer: "I came" },
+        { question: "If I ______ more time, I would travel.", options: ["have", "had", "has", "will have"], answer: "had" },
+        { question: "They ______ to the party yet.", options: ["haven’t come", "didn’t come", "not come", "don’t come"], answer: "haven’t come" }
+      ],
+      B2: [
+        { question: "Hardly ______ finished the test when the bell rang.", options: ["he had", "had he", "did he", "he did"], answer: "had he" },
+        { question: "It’s high time you ______ home.", options: ["go", "went", "have gone", "goes"], answer: "went" },
+        { question: "He denied ______ the money.", options: ["to steal", "steal", "stole", "stealing"], answer: "stealing" },
+        { question: "No sooner ______ the phone than it rang again.", options: ["had I put down", "I had put down", "put I down", "had put I down"], answer: "had I put down" },
+        { question: "She speaks English as if she ______ a native speaker.", options: ["was", "were", "is", "been"], answer: "were" }
+      ]
+    };
+
+    let questions = [];
+    let currentQuestion = 0;
+    let score = 0;
+
+    function startQuiz(level) {
+      questions = questionBank[level];
+      currentQuestion = 0;
+      score = 0;
+      document.querySelector(".level-grid").style.display = "none";
+      document.getElementById("quiz").style.display = "block";
+      document.getElementById("result").style.display = "none";
+      showQuestion();
+    }
+
+    function showQuestion() {
+      const q = questions[currentQuestion];
+      document.getElementById("question").textContent = q.question;
+      const optionsContainer = document.getElementById("options");
+      optionsContainer.innerHTML = "";
+
+      q.options.forEach(option => {
+        const button = document.createElement("button");
+        button.textContent = option;
+        button.onclick = () => handleAnswer(option);
+        optionsContainer.appendChild(button);
+      });
+    }
+
+    function handleAnswer(selected) {
+      if (selected === questions[currentQuestion].answer) {
+        score++;
+      }
+      currentQuestion++;
+      if (currentQuestion < questions.length) {
+        showQuestion();
+      } else {
+        showResult();
+      }
+    }
+
+    function showResult() {
+      document.getElementById("quiz").style.display = "none";
+      document.getElementById("result").style.display = "block";
+      document.getElementById("score").textContent = `You scored ${score} out of ${questions.length}`;
+    }
+
+    function restartQuiz() {
+      document.querySelector(".level-grid").style.display = "flex";
+      document.getElementById("quiz").style.display = "none";
+      document.getElementById("result").style.display = "none";
+    }
+  </script>
+</body>
+</html>
