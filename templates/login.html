@@ -1,57 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../static/style.css">
-    <style>
-        .ota{
-            border: 2px solid black;
-            width: 900px;
-            height: 500px;
-            background-repeat: no-repeat;
-            background-size: cover;
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-            background-image: url(https://wallpapers.com/images/featured/night-9nngmbvce2sn0x9h.jpg);
-            margin-top: 200px;
-            margin-left: 350px;
-        }
-        form{
-            margin-bottom: 20px;
-        }
+  <meta charset="UTF-8">
+  <title>Kirish</title>
+  <style>
+    body {
+      background: #f4f8ff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
 
-        input{
-            padding: 5px 10px;
-            background: linear-gradient(-45deg, rgb(0, 140, 255),rgb(0, 76, 255));
-            border: none;
-        }
+    .login-container {
+      background: #fff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
 
-        button{
-            padding: 5px 10px;
-            background: linear-gradient(-45deg, rgb(0, 140, 255),rgb(0, 76, 255));
-            border: none;
-            
-        }
-    </style>
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .xabar {
+      color: red;
+      margin-top: 10px;
+    }
+
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    p {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+  </style>
 </head>
 <body>
-    <div class="ota">
-
-        <h1>Tizimga kirish</h1>
-        <form method="POST">
-            <input type="text" name="ism" placeholder="Ismingiz📛">
-            <input type="text" name="parol" placeholder="Parolingiz🔑">
-            <button type="submit">Yuborish</button>
-        </form>
-        
-        {% if xabar %}
-           <p style="color: rgb(255, 255, 255);">{{  xabar }}</p>
-        {% endif %}
-    </div>
-
-
+  <div class="login-container">
+    <h2>Saytga kirish</h2>
+    <form method="POST">
+      <input type="email" name="email" placeholder="Elektron pochta" required>
+      <input type="text" name="ism" placeholder="Ismingiz" required>
+      <input type="password" name="parol" placeholder="Parolingiz" required>
+      <button type="submit">Kirish</button>
+    </form>
+    {% if xabar %}
+      <div class="xabar">{{ xabar }}</div>
+    {% endif %}
+    <p>Hali ro‘yxatdan o‘tmaganmisiz? <a href="{{ url_for('register') }}">Ro‘yxatdan o‘tish</a></p>
+  </div>
 </body>
 </html>

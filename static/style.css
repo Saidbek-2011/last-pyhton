@@ -10,7 +10,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(to right, #dfe9f3, #ffffff);
     min-height: 100vh;
-    background: linear-gradient(-65deg, deepskyblue,blue);
+    background-color: beige;
 
 }
 
@@ -37,7 +37,7 @@ header{
 
 .links{
     text-decoration: none;
-    color: white;
+    color: rgba(0, 0, 0, 0.936);
     justify-content: space-around;
 
 }
@@ -72,6 +72,7 @@ header{
   .level-card {
     flex: 1 1 calc(25% - 20px);
     border: 2px solid #007bff;
+    background-color:deepskyblue;
     padding: 20px;
     text-align: center;
     border-radius: 12px;
@@ -79,8 +80,8 @@ header{
     transition: all 0.3s ease;
   }
   .level-card:hover {
-    background-color:deepskyblue;
-    color: white;
+    background-color:white;
+    color: black;
     transform: scale(1.05);
   }
   .level-card h3 {
@@ -102,11 +103,11 @@ header{
     font-size: 16px;
     border: none;
     border-radius: 8px;
-    background: #007bff;
+    background: deepskyblue;
     cursor: pointer;
   }
   .options button:hover {
-    background: deepskyblue;
+    background: white;
     transform: scale(1.05);
 
   }
